@@ -14,6 +14,71 @@
     <div class="container-fluid">
         <h2 th:text=" 'Hello ' + ${#httpServletRequest.remoteUser} + ' !'">Login as</h2>
         <div class="row">
+			<div class="col-md-6">
+                <br>
+                <h3 th:text="${alertmessage}"></h3>
+                <br>
+				<div class="card">
+					<div class="card-header">Tambah User Baru</div>
+					<div class="card-body">
+                        <form th:action="@{/user/addUser}" method="post">
+							<div class="row form-group">
+                                <label class="col-sd-4"> User Name</label>
+                                <input class="col-sd-8 form-control input-sm" type="text" name="username">
+							</div>
+							<div class="row form-group">
+                                <label class="col-sd-4"> Password: </label> 
+                                <input class="col-sd-8 form-control input-sm" type="password" name="password">
+							</div>
+                            <div class="row form-group">
+                                <label class="col-sd-4"> Role: </label> 
+                                <input class="col-sd-8 form-control input-sm" type="text" name="role">
+							</div>
+							<div>
+								<button type="submit" class="btn btn-primary">Simpan</button>
+							</div>
+						</form>
+					</div>
+				</div>
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">Update Password</div>
+                    <div th:if="${error}">
+                        <p style="color: red">Error: </p>
+                        <p th:each="error: ${error}" style="color: red" th:text="${error}"></p>
+                    </div>
+                    <div th:if="${success}">
+                        <p style="color: green">Success Changed Password!</p>
+                    </div>
+                    <div class="card-body">
+                        <form th:action="@{/user/changePassword}" method="post">
+                            <div class="row form-group">
+                                <label class="col-sd-4"> Password Lama: </label> <input
+                                    class="col-sd-8 form-control input-sm" type="password" name="oldPassword" required>
+                            </div>
+                            <div class="row form-group">
+                                <label class="col-sd-4"> Password Baru: </label> <input
+                                    class="col-sd-8 form-control input-sm" type="password" name="newPassword" required>
+                            </div>
+                            <div class="row form-group">
+                                <label class="col-sd-4">Konfirmasi Password Baru: </label> <input
+                                    class="col-sd-8 form-control input-sm" type="password" name="confirmationPassword"
+                                    required>
+                            </div>
+                            <div>
+                                <button type="submit" class="btn btn-primary">Simpan</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="row">
             <div class="col-md-6">
                 <div class="card">
                     <div class="card-header">

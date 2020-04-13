@@ -22,10 +22,10 @@ public class PilotController {
     @Autowired
     private PilotService pilotService;
 
-    @RequestMapping("/")
-    private String home() {
-        return "home";
-    }
+    // @RequestMapping("/")
+    // private String home() {
+    //     return "home";
+    // }
 
     @RequestMapping(value = "/pilot/add", method = RequestMethod.GET)
     private String add(Model model) {
